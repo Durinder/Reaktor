@@ -1,25 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react'
+import Live from './components/Live'
+import Statistics from './components/Statistics';
+import resultsService from './services/resultsService';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+/* 
+ */const App = () => {
+	const [ history, setHistory ] = useState([])
+	const [ chosenPlayer, setChosenPlayer ] = useState('')
+
+	const handleClick = (player) => {
+		resultsService
+			.getAll()
+			.then(updatedResults => {
+				setHistory(updatedResults)
+			})
+			.catch(error => {
+				console.log(error)
+			})
+		setChosenPlayer(player)
+	}
+
+	return (
+	  	<div>
+			<Live handleClick={handleClick}/>
+			<Statistics player={chosenPlayer} history={history} />
+		</div>
+	)
 }
 
 export default App;
