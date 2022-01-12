@@ -1,4 +1,3 @@
-import "./App.css"
 import React, { useState } from "react"
 import Live from "./components/Live"
 import Statistics from "./components/Statistics"
