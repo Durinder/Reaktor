@@ -26,20 +26,35 @@ const Live = ({ handleClick }) => {
 		return (
 			<div>
 				<h2>Live matches</h2>
-				awaiting games..
+				Awaiting games..
 			</div>
 		)
 	} else {
 		return (
 			<div>
 				<h2>Live matches</h2>
-				{matches.map((elem) => (
-					<p key={elem.gameId}>
-						<button onClick={() => handleClick(elem.playerA.name)}>{elem.playerA.name}</button>
-						{elem.playerA.played} vs {elem.playerB.played}
-						<button onClick={() => handleClick(elem.playerB.name)}>{elem.playerB.name}</button>
-					</p>
-				))}
+				<table>
+					<thead>
+						<tr>
+							<th>Player A</th>
+							<th>Played</th>
+							<th>VS</th>
+							<th>Played</th>
+							<th>Player B</th>
+						</tr>
+					</thead>
+					<tbody>
+						{matches.map((elem) => (
+							<tr key={elem.gameId}>
+								<td><button onClick={() => handleClick(elem.playerA.name)}>{elem.playerA.name}</button></td>
+								<td>{elem.playerA.played}</td>
+								<td>vs</td>
+								<td>{elem.playerB.played}</td>
+								<td><button onClick={() => handleClick(elem.playerB.name)}>{elem.playerB.name}</button></td>
+							</tr>
+						))}
+					</tbody>
+				</table>
 			</div>
 			)}
 }

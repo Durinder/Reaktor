@@ -4,12 +4,12 @@ import Live from './components/Live'
 import Statistics from './components/Statistics';
 import resultsService from './services/resultsService';
 
-/* 
- */const App = () => {
+const App = () => {
 	const [ history, setHistory ] = useState([])
 	const [ chosenPlayer, setChosenPlayer ] = useState('')
 
 	const handleClick = (player) => {
+		setHistory('Loading')
 		resultsService
 			.getAll()
 			.then(updatedResults => {
