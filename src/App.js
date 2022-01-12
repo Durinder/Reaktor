@@ -1,15 +1,15 @@
-import './App.css';
-import React, { useState } from 'react'
-import Live from './components/Live'
-import Statistics from './components/Statistics';
-import resultsService from './services/resultsService';
+import "./App.css"
+import React, { useState } from "react"
+import Live from "./components/Live"
+import Statistics from "./components/Statistics"
+import resultsService from "./services/resultsService"
 
 const App = () => {
 	const [ history, setHistory ] = useState([])
-	const [ chosenPlayer, setChosenPlayer ] = useState('')
+	const [ chosenPlayer, setChosenPlayer ] = useState("")
 
 	const handleClick = (player) => {
-		setHistory('Loading')
+		setHistory("Loading")
 		resultsService
 			.getAll()
 			.then(updatedResults => {
@@ -22,11 +22,11 @@ const App = () => {
 	}
 
 	return (
-	  	<div>
+		<div>
 			<Live handleClick={handleClick}/>
 			<Statistics player={chosenPlayer} history={history} />
 		</div>
 	)
 }
 
-export default App;
+export default App

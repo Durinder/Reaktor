@@ -1,5 +1,8 @@
+import React from "react"
+import PropTypes from "prop-types"
+
 const Statistics = ({ player, history }) => {
-	if (history === 'Loading') {
+	if (history === "Loading") {
 		return (
 			<div>
 				<h2>Statistics</h2>
@@ -53,10 +56,18 @@ const Statistics = ({ player, history }) => {
 					determineWinner(elem.playerA, elem.playerB) === player)).length / playerHistory.length * 100).toFixed(2)}%<br />
 				matches played: {playerHistory.length}<br />
 				most played hand: {mostPlayedHand(player, playerHistory)}
+				{playerHistory.map((elem) => (
+					<p key={elem.gameId}>
+						{elem.playerA.name} {elem.playerA.played} vs {elem.playerB.played} {elem.playerB.name}</p>))}
 			</div>
 			
 		)
 	}
 }
 
-export default Statistics;
+Statistics.propTypes = {
+	player: PropTypes.string,
+	history: PropTypes.any
+}
+
+export default Statistics

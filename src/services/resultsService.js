@@ -1,5 +1,5 @@
-import axios from 'axios'
-const baseUrl = '/rps'
+import axios from "axios"
+const baseUrl = "/rps"
 
 const getAll = () => {
 	const request = axios.get(`${baseUrl}/history`)
@@ -10,4 +10,4 @@ const resultsService = {
 	getAll: getAll
 }
 
-export default resultsService;
+export default resultsService

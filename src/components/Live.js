@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import PropTypes from "prop-types"
+
 const ws = new WebSocket("wss://bad-api-assignment.reaktor.com/rps/live")
 
 const Live = ({ handleClick }) => {
@@ -56,7 +58,11 @@ const Live = ({ handleClick }) => {
 					</tbody>
 				</table>
 			</div>
-			)}
+		)}
 }
 
-export default Live;
+Live.propTypes = {
+	handleClick: PropTypes.func
+}
+
+export default Live
