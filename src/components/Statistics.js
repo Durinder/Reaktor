@@ -2,22 +2,22 @@ import React from "react"
 import PropTypes from "prop-types"
 
 const Statistics = ({ player, history }) => {
-	if (history === "Loading") {
+/* 	if (history === "Loading") {
 		return (
 			<div>
 				<h2>Statistics</h2>
 				Loading..
 			</div>
 		)
-	}
-	else if (history.data === undefined) {
+	} */
+	if (player === "") {
 		return (
 			<div>
 				<h2>Statistics</h2>
 				Select a player to view historical data.
 			</div>
 		)}
-	else if (history.data) {
+	else if (history) {
 		const determineWinner = ( playerA, playerB ) => {
 			if (playerA.played === playerB.played) {
 				return ("TIE")
@@ -47,11 +47,16 @@ const Statistics = ({ player, history }) => {
 				return ("tied")
 		}
 
-		const playerHistory = history.data.filter(elem => elem.playerA.name === player || elem.playerB.name === player)
+		const playerHistory = history.filter(elem => elem.playerA.name === player || elem.playerB.name === player)
 		return (
 			<div>
 				<h2>Statistics</h2>
 				<h3>{player}</h3>
+				{history.length < 100000 &&
+					<p>
+						gathering more data..
+					</p>
+				}
 				win ratio: {(playerHistory.filter((elem) => (
 					determineWinner(elem.playerA, elem.playerB) === player)).length / playerHistory.length * 100).toFixed(2)}%<br />
 				matches played: {playerHistory.length}<br />

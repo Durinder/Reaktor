@@ -1,13 +1,12 @@
 import axios from "axios"
-const baseUrl = "/rps"
 
-const getAll = () => {
-	const request = axios.get(`${baseUrl}/history`)
+const getPage = ( cursor ) => {
+	const request = axios.get(cursor)
 	return request.then(response => response.data)
 }
 
 const resultsService = {
-	getAll: getAll
+	getPage: getPage
 }
 
 export default resultsService
