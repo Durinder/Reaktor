@@ -65,7 +65,7 @@ const Statistics = ({ player, history }) => {
 
 Statistics.propTypes = {
 	player: PropTypes.string,
-	history: PropTypes.any
+	history: PropTypes.array
 }
 
 export default Statistics
