@@ -17,7 +17,6 @@ const App = () => {
 					setHistory(history => [...history, ...newPage.data])
 				}
 			})
-		console.log(history)
 	}, [history])
 
 	const handleClick = (player) => {

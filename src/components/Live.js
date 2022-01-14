@@ -23,7 +23,7 @@ const Live = ({ handleClick }) => {
 				setMatches(matches.map(elem => elem.gameId !== match.gameId ? elem : match))
 			}
 		}}
-	
+
 	if (matches.length === 0) {
 		return (
 			<div>
